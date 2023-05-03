@@ -163,6 +163,12 @@ main {
   }
 }
 
+@media only screen and (min-width: 2560px) {
+  #pokemon-container {
+    grid-template-columns: repeat(10, minmax(0, 1fr));
+  }
+}
+
 
 input:checked + .slider {
   background-color: #eab308;

@@ -75,8 +75,8 @@ const cardTypeTemplate = document.getElementById('card-type-template');
 
 const pagination = {
     page: 1,
-    page_size: 20,
-    total: 0
+    page_size: 40,
+    total: 40
 }
 
 const observer = new IntersectionObserver(([entry]) => {
