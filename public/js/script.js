@@ -91,8 +91,5 @@ const observer = new IntersectionObserver(([entry]) => {
 observer.observe(document.getElementById('observer'))
         
 
-Window.onload = () => {
-    getAllPokemons(pagination)
-    document.getElementById('darkmode-toggle').checked = true
-}
+Window.onload = getAllPokemons(pagination)
 
