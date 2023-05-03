@@ -25,8 +25,6 @@ const getPokemonInfo = async (pokemonId, card) => {
         .then(res => res.text())
         .then(data => {
             const response = JSON.parse(data)
-            
-
             card.querySelector('.card-title').innerHTML = response.name.charAt(0).toUpperCase() + response.name.slice(1)
             card.querySelector('.card-footer-description').innerHTML = response.flavor_text_entries[0].flavor_text
             card.querySelector('.card-body-image>img').src = `https://play.pokemonshowdown.com/sprites/xyani/${response.name.replace('-', '')}.gif`
@@ -67,7 +65,9 @@ const badgeColors = {
     psychic: 'magenta',
     ice: 'aqua',
     dark: 'brown',
-    ghost: 'purple'
+    ghost: 'purple',
+    steel: 'lightgray',
+    dragon: 'orange'
 }
 
 const cardTemplate = document.getElementById('card-template');
@@ -81,8 +81,7 @@ const pagination = {
 
 const observer = new IntersectionObserver(([entry]) => {
     if (entry && entry.isIntersecting) {
-        pagination.page = pagination.page + 1,
-        pagination.page_size = pagination.page_size,
+        pagination.page = pagination.page + 1
         pagination.total = pagination.total + pagination.page_size
 
         getAllPokemons(pagination)

@@ -6,15 +6,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokemon</title>
-    <link rel="icon" type="image/ico" href="public/images/favicon.ico">/
+    <link rel="icon" type="image/ico" href="public/images/favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="public/css/style.css">
+    <link rel="stylesheet" href="public/css/darkmode.css">
+    <script src="public/js/script.js" defer></script>
 </head>
 
 <body>
-    <header></header>
+    <header>
+        <img width="40px" height="40px" style="padding-top: 10px" src="public/images/pokeball.png" />
+        <label for="darkmode-toggle" class="darkmode-container">
+            <input id="darkmode-toggle" name="darkmode-toggle" type="checkbox" />
+            <div class="darkmode-icon-container slider">
+                <div class="darkmode-icon-box">
+                    <svg viewBox="0 0 24 24" fill="#ffffff" stroke="#000" stroke-linecap="round" stroke-linejoin="round"
+                        stroke-width="2" width="20px" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+                    </svg>
+                </div>
+        </label>
+    </header>
     <main>
         <div id="pokemon-container">
 
@@ -27,7 +41,7 @@
             <div class="card-title"></div>
             <div class="card-body">
                 <div class="card-body-image">
-                    <img height="100px" />
+                    <img height="100px" style="max-width:100%" />
                 </div>
                 <div class="card-body-type">
                 </div>
@@ -41,7 +55,6 @@
     <template id="card-type-template">
         <div class="card-type"></div>
     </template>
-    <script src="script.js"></script>
 </body>
 
 </html>

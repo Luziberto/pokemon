@@ -1,0 +1,29 @@
+:root {
+  --bg-color: #f3f4f6;
+  --text-color: #213547;
+  --text-name: #374151;
+}
+
+:root,
+nav {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+.container {
+  background-color: var(--bg-color);
+}
+
+.crypto-name {
+  color: var(--text-name);
+}
+
+input {
+  color: #0d1117;
+}
+
+:root:has(#darkmode-toggle:checked) {
+  --bg-color: #0d1117;
+  --text-color: #ffffff;
+  --text-name: #d1d5db;
+}
