@@ -38,7 +38,7 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 300px;
+    height: 350px;
 }
 
 .card-body {
@@ -65,6 +65,18 @@ main {
 
 .card-body-image {
     text-align: center;
+    position: relative;
+}
+
+.card-body-image {
+  max-width:100%;
+  z-index: 2;
+  background-color: white;
+  border-radius: 50%;
+  height: 150px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .card-body-type {

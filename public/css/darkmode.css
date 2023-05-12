@@ -1,6 +1,6 @@
 :root {
   --bg-color: rgb(210, 213, 217);
-  --text-color: #213547;
+  --text-color: #0d1117;
   --text-name: #374151;
 }
 
@@ -14,16 +14,12 @@ nav {
   background-color: var(--bg-color);
 }
 
-.crypto-name {
-  color: var(--text-name);
-}
-
-input {
-  color: #0d1117;
+:root.card-footer-description {
+  color: var(--bg-color)
 }
 
 :root:has(#darkmode-toggle:checked) {
   --bg-color: #0d1117;
-  --text-color: #ffffff;
+  --text-color: #0d1117;
   --text-name: #d1d5db;
 }
