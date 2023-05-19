@@ -1,3 +1,5 @@
+import colors from './colors.js'
+
 const pokemonContainer = document.getElementById('pokemon-container')
 
 const getPokemon = async (pokemon) => {
@@ -12,13 +14,13 @@ const getPokemon = async (pokemon) => {
             const typeName1 = response.types[0].type.name
             if (response.types.length > 1) {
                 const typeName2 = response.types[1].type.name
-                card.querySelector('.card').style.background = `linear-gradient(to right, ${badgeColors[typeName1]['circle']} 50%, ${badgeColors[typeName2]['circle']} 50%)`
-                cardImage.style.background = `linear-gradient(to right, ${badgeColors[typeName1]['background'] || defaultColor} 50%, ${badgeColors[typeName2]['background'] || defaultColor} 50%)`
+                card.querySelector('.card').style.background = `linear-gradient(to right, ${colors[typeName1]['circle']} 50%, ${colors[typeName2]['circle']} 50%)`
+                cardImage.style.background = `linear-gradient(to right, ${colors[typeName1]['background'] || defaultColor} 50%, ${colors[typeName2]['background'] || defaultColor} 50%)`
             } else {
-                card.querySelector('.card').style.backgroundColor = badgeColors[typeName1]['background'] || defaultColor
-                cardImage.style.background = badgeColors[typeName1]['types'] || defaultColor
+                card.querySelector('.card').style.backgroundColor = colors[typeName1]['background'] || defaultColor
+                cardImage.style.background = colors[typeName1]['types'] || defaultColor
             }
-            card.querySelector('.card-description').style.backgroundColor = badgeColors[typeName1]['background']
+            card.querySelector('.card-description').style.backgroundColor = colors[typeName1]['background']
 
             Object.values(response.sprites).reverse().forEach(spriteUrl => {
                 const img = document.createElement("img")
@@ -30,7 +32,7 @@ const getPokemon = async (pokemon) => {
                 const cardType = cardTypeTemplate.content.cloneNode(true)
                 const typeName = element.type.name
                 cardType.querySelector('.card-type').innerHTML = typeName.charAt(0).toUpperCase() + typeName.slice(1)
-                cardType.querySelector('.card-type').style.backgroundColor = badgeColors[element.type.name]['types'] || 'gray'
+                cardType.querySelector('.card-type').style.backgroundColor = colors[element.type.name]['types'] || 'gray'
                 card.querySelector('.card-body-type').appendChild(cardType)
             })
 
@@ -68,99 +70,6 @@ const getAllPokemons = async (pagination) => {
                 getPokemon(pokemon.name)
             });
         })
-}
-
-const badgeColors = {
-    grass: {
-        types: 'green',
-        background: '#e0fde0',
-        circle: '#f2fdf3'
-    },
-    poison: {
-        types: 'blueviolet',
-        background: '#bc88ce',
-        circle: '#b374c9'
-    },
-    normal: {
-        types: 'darkgray',
-        background: '#ceceb4',
-        circle: '#fcfbfd'
-    },
-    flying: {
-        types: 'lightblue',
-        background: '#ceceb4',
-        circle: '#fcfbfd'
-    },
-    electric: {
-        types: 'darkgoldenrod',
-        background: '#f2fdf3',
-        circle: '#d3d1cb'
-    },
-    ground: {
-        types: 'brown',
-        background: '#c0b6ad',
-        circle: '#d7d1cd'
-    },
-    fairy: {
-        types: 'pink',
-        background: '#d7d1cd',
-        circle: '#d7d1cd'
-    },
-    fire: {
-        types: 'red',
-        background: '#fef2f3',
-        circle: '#fedfe0'
-    },
-    fighting: {
-        types: 'darkred',
-        background: '#d7d0c6',
-        circle: '#f6f3f0'
-    },
-    water: {
-        types: 'blue',
-        background: '#def2fc',
-        circle: '#f2f9ff'
-    },
-    rock: {
-        types: 'lightgrey',
-        background: '#f2f9ff',
-        circle: '#d3d2d1'
-    },
-    bug: {
-        types: 'darkgreen',
-        background: '#f2fdf3',
-        circle: '#fdeedc'
-    },
-    psychic: {
-        types: 'magenta',
-        background: '#d3d1cb',
-        circle: '#ceceb4'
-    },
-    ice: {
-        types: 'aqua',
-        background: '#00b2b2',
-        circle: '#00e5e5'
-    },
-    dark: {
-        types: 'brown',
-        background: '#c97f7f',
-        circle: '#b75454'
-    },
-    ghost: {
-        types: 'purple',
-        background: '#8c198c',
-        circle: '#b266b2'
-    },
-    steel: {
-        types: 'lightgray',
-        background: '#a8a8a8',
-        circle: '#7e7e7e'
-    },
-    dragon: {
-        types: 'orange',
-        background: '#7488b0',
-        circle: '#fef2f3'
-    },
 }
 
 const cardTemplate = document.getElementById('card-template');

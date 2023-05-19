@@ -6,7 +6,7 @@
 }
 
 body {
-  background-image: url('/public/images/safari_zone.png');
+  background-image: url('public/images/safari_zone.png');
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
@@ -47,7 +47,7 @@ main {
     transition-duration: 300ms;
 }
 
-.card:hover, .card-description:hover {
+.card:hover{
   background-color: black;
   scale: 1.2;
   z-index: 10;
