@@ -12,8 +12,8 @@ const getPokemon = async (pokemon) => {
             const typeName1 = response.types[0].type.name
             if (response.types.length > 1) {
                 const typeName2 = response.types[1].type.name
-                card.querySelector('.card').style.background = `linear-gradient(to right, ${badgeColors[typeName1]['background']} 50%, ${badgeColors[typeName2]['background']} 50%)`
-                cardImage.style.background = `linear-gradient(to right, ${badgeColors[typeName1]['types']} 50%, ${badgeColors[typeName2]['types']} 50%)`
+                card.querySelector('.card').style.background = `linear-gradient(to right, ${badgeColors[typeName1]['circle']} 50%, ${badgeColors[typeName2]['circle']} 50%)`
+                cardImage.style.background = `linear-gradient(to right, ${badgeColors[typeName1]['background'] || 'gray'} 50%, ${badgeColors[typeName2]['background'] || 'gray'} 50%)`
             } else {
                 card.querySelector('.card').style.backgroundColor = badgeColors[typeName1]['background'] || 'gray'
                 cardImage.style.background = badgeColors[typeName1]['types'] || 'gray'
@@ -46,6 +46,7 @@ const getPokemonInfo = async (pokemonId, card) => {
         });
 }
 
+
 const getAllPokemons = async (pagination) => {
     let params = new URLSearchParams()
     params.append('offset', (pagination.page - 1) * pagination.page_size)
@@ -69,13 +70,13 @@ const badgeColors = {
     },
     poison: {
         types: 'blueviolet',
-        background: '',
-        circle: ''
+        background: '#bc88ce',
+        circle: '#b374c9'
     },
     normal: {
         types: 'darkgray',
         background: '#ceceb4',
-        circle: '##fcfbfd'
+        circle: '#fcfbfd'
     },
     flying: {
         types: 'lightblue',
@@ -129,23 +130,23 @@ const badgeColors = {
     },
     ice: {
         types: 'aqua',
-        background: '',
-        circle: ''
+        background: '#00b2b2',
+        circle: '#00e5e5'
     },
     dark: {
         types: 'brown',
-        background: '',
-        circle: ''
+        background: '#c97f7f',
+        circle: '#b75454'
     },
     ghost: {
         types: 'purple',
-        background: '',
-        circle: ''
+        background: '#8c198c',
+        circle: '#b266b2'
     },
     steel: {
         types: 'lightgray',
-        background: '',
-        circle: ''
+        background: '#a8a8a8',
+        circle: '#7e7e7e'
     },
     dragon: {
         types: 'orange',

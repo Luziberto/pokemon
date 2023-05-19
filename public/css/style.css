@@ -6,17 +6,18 @@
 }
 
 body {
-  margin-left: 50px;
-  margin-right: 50px;
+  background-image: url('/public/images/safari_zone.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: 50%;
+  margin: 0px;
 }
 
 header {
   display: flex;
   justify-content: space-between;
-}
-
-body {
-  padding: 0px;
+  padding: 0px 8px;
 }
 
 main {
@@ -29,21 +30,34 @@ main {
     grid-gap: 50px;
     grid-template-rows: auto;
     box-sizing: border-box;
+    margin-left: 50px;
+    margin-right: 50px;
 }
 
 .card {
     padding: 10px;
-    background-color: gray;
+    background-image: gray;
     border-radius: 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     height: 350px;
+    z-index: 1;
+    position: relative;
+    cursor: pointer;
 }
+.pokemon-container .card:hover {
+  background-color: black;
+}
+/* .card:hover::before{
+  content: "";
+  position: absolute;
+  inset: 0px;
+  background-color: white;
+} */
 
 .card-body {
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding: 10px 0px;
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -64,16 +78,12 @@ main {
 }
 
 .card-body-image {
-    text-align: center;
-    position: relative;
-}
-
-.card-body-image {
-  max-width:100%;
+  text-align: center;
+  position: relative;
   z-index: 2;
   background-color: white;
   border-radius: 50%;
-  height: 150px;
+  height: 165px;
   display:flex;
   justify-content: center;
   align-items: center;
@@ -93,7 +103,6 @@ main {
 }
 .darkmode-container {
   display: inline-block;
-  width: 28px;
   cursor: pointer;
 }
 
@@ -159,25 +168,25 @@ main {
 
 @media only screen and (min-width: 768px) {
   #pokemon-container {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
 @media only screen and (min-width: 1080px) {
   #pokemon-container {
-    grid-template-columns: repeat(6, minmax(0, 1fr));
+    grid-template-columns: repeat(5, minmax(0, 1fr));
   }
 }
 
 @media only screen and (min-width: 1440px) {
   #pokemon-container {
-    grid-template-columns: repeat(8, minmax(0, 1fr));
+    grid-template-columns: repeat(7, minmax(0, 1fr));
   }
 }
 
 @media only screen and (min-width: 2560px) {
   #pokemon-container {
-    grid-template-columns: repeat(10, minmax(0, 1fr));
+    grid-template-columns: repeat(9, minmax(0, 1fr));
   }
 }
 
