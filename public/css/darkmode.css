@@ -1,6 +1,6 @@
 :root {
   --bg-color:  gray;
-  --text-color: #0d1117;
+  --text-color: white;
   --text-name: #374151;
 }
 
@@ -32,6 +32,16 @@ body {
   box-shadow: 0.5rem 0.5rem var(--bg-color);
   border:  var(--bg-color) solid 0.5rem;
 }
+
+.card-title {
+  color: black;
+  border-color: var(--bg-color);
+}
+
+.card-description {
+  color: black;
+}
+
 :root:has(#darkmode-toggle:checked) body::before {
   content: "";
   position: absolute;

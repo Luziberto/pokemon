@@ -42,12 +42,15 @@ main {
     flex-direction: column;
     justify-content: space-between;
     height: 350px;
-    z-index: 1;
     position: relative;
     cursor: pointer;
+    transition-duration: 300ms;
 }
-.pokemon-container .card:hover {
+
+.card:hover, .card-description:hover {
   background-color: black;
+  scale: 1.2;
+  z-index: 10;
 }
 /* .card:hover::before{
   content: "";
@@ -61,11 +64,11 @@ main {
     flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    gap: 3rem;
 }
 
 .card-type {
-    padding: 5px;
+    padding: 10px;
     border-radius: 7px;
     background-color: black;
 }
@@ -91,16 +94,34 @@ main {
 
 .card-body-type {
     display:flex;
-    justify-content: center;
+    justify-content: space-around;
     gap: 20px;
 }
 
-.card-footer-description {
-    overflow-y: auto;
-    overflow-x: hidden;
-    padding: 10px;
-    max-height: 50px;
+.card-description {
+  display: none;
+  position: absolute;
+  background-color: gray;
+  right: 0;
+  top: 0;
+  inset: 0px;
+  transform: translate(calc(100% + 1rem));
+  border-radius: 10px;
+  padding: 1rem;
+  overflow-y: auto;
 }
+.card-description-img {
+  display: flex;
+  flex-wrap: wrap;
+  order: 2;
+}
+.card:hover .card-description {
+  display: block;
+}
+.card-description:hover {
+  display: block;
+}
+
 .darkmode-container {
   display: inline-block;
   cursor: pointer;

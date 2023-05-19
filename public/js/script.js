@@ -7,21 +7,29 @@ const getPokemon = async (pokemon) => {
             const response = JSON.parse(data)
             const card = cardTemplate.content.cloneNode(true)
             const cardImage = card.querySelector('.card-body-image')
-
+            const defaultColor = 'gray'
 
             const typeName1 = response.types[0].type.name
             if (response.types.length > 1) {
                 const typeName2 = response.types[1].type.name
                 card.querySelector('.card').style.background = `linear-gradient(to right, ${badgeColors[typeName1]['circle']} 50%, ${badgeColors[typeName2]['circle']} 50%)`
-                cardImage.style.background = `linear-gradient(to right, ${badgeColors[typeName1]['background'] || 'gray'} 50%, ${badgeColors[typeName2]['background'] || 'gray'} 50%)`
+                cardImage.style.background = `linear-gradient(to right, ${badgeColors[typeName1]['background'] || defaultColor} 50%, ${badgeColors[typeName2]['background'] || defaultColor} 50%)`
             } else {
-                card.querySelector('.card').style.backgroundColor = badgeColors[typeName1]['background'] || 'gray'
-                cardImage.style.background = badgeColors[typeName1]['types'] || 'gray'
+                card.querySelector('.card').style.backgroundColor = badgeColors[typeName1]['background'] || defaultColor
+                cardImage.style.background = badgeColors[typeName1]['types'] || defaultColor
             }
+            card.querySelector('.card-description').style.backgroundColor = badgeColors[typeName1]['background']
 
+            Object.values(response.sprites).reverse().forEach(spriteUrl => {
+                const img = document.createElement("img")
+                img.style.width = '50%'
+                img.src = typeof spriteUrl === 'string' ? spriteUrl : ''
+                if (spriteUrl) card.querySelector('.card-description-img').appendChild(img)
+            })
             response.types.forEach(element => {
                 const cardType = cardTypeTemplate.content.cloneNode(true)
-                cardType.querySelector('.card-type').innerHTML = element.type.name
+                const typeName = element.type.name
+                cardType.querySelector('.card-type').innerHTML = typeName.charAt(0).toUpperCase() + typeName.slice(1)
                 cardType.querySelector('.card-type').style.backgroundColor = badgeColors[element.type.name]['types'] || 'gray'
                 card.querySelector('.card-body-type').appendChild(cardType)
             })
@@ -38,7 +46,7 @@ const getPokemonInfo = async (pokemonId, card) => {
         .then(data => {
             const response = JSON.parse(data)
             card.querySelector('.card-title').innerHTML = response.name.charAt(0).toUpperCase() + response.name.slice(1)
-            card.querySelector('.card-footer-description').innerHTML = response.flavor_text_entries[0].flavor_text
+            card.querySelector('.card-description').prepend(response.flavor_text_entries[0].flavor_text)
             card.querySelector('.card-body-image img').src = `https://play.pokemonshowdown.com/sprites/xyani/${response.name.replace('-', '')}.gif`
 
             pokemonContainer.appendChild(card)
