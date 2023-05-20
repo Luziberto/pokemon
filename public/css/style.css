@@ -6,7 +6,7 @@
 }
 
 body {
-  background-image: url('public/images/safari_zone.png');
+  background-image: url('../images/safari_zone.png');
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
