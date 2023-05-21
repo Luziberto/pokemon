@@ -15,9 +15,8 @@ const changeMusic = (currentMusic, season) => {
 
 const generateDifferentSeason = (currentSeason) => {
   const newSeason = Math.floor((Math.random() * 5) + 1)
-  if (currentSeason === newSeason) generateDifferentSeason(currentSeason)
+  if (currentSeason === newSeason) return generateDifferentSeason(currentSeason)
   else currentSeason = newSeason
-  return currentSeason
 }
 
 setInterval(() => {
