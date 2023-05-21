@@ -8,7 +8,7 @@ pokeball.addEventListener('click', () => {
 
 const changeMusic = (currentMusic, season) => {
   if (currentMusic) currentMusic.pause()
-  const newMusic = new Audio(`../../public/audio/pokemon_op_${season}.mp3`)
+  const newMusic = new Audio(`public/audio/pokemon_op_${season}.mp3`)
   newMusic.play()
   music = newMusic
 }
