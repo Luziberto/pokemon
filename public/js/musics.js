@@ -2,9 +2,6 @@
 let music = null
 let currentSeason = 0
 
-pokeball.addEventListener('click', () => {
-  changeMusic(music, generateDifferentSeason(currentSeason))
-})
 
 const changeMusic = (currentMusic, season) => {
   if (currentMusic) currentMusic.pause()
@@ -13,12 +10,21 @@ const changeMusic = (currentMusic, season) => {
   music = newMusic
 }
 
+const changeDifferentMusic = () => {
+  currentSeason = generateDifferentSeason(currentSeason)
+  changeMusic(music, currentSeason)
+}
+
 const generateDifferentSeason = (currentSeason) => {
   const newSeason = Math.floor((Math.random() * 5) + 1)
   if (currentSeason === newSeason) return generateDifferentSeason(currentSeason)
-  else currentSeason = newSeason
+  else return newSeason
 }
 
 setInterval(() => {
-  if (!music || !music.currentTime || music.ended) changeMusic(music, generateDifferentSeason(currentSeason))
+  if (!music || !music.currentTime || music.ended) {
+    changeDifferentMusic()
+  }
 }, 1000)
+
+pokeball.addEventListener('click', changeDifferentMusic)
