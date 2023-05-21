@@ -2,6 +2,8 @@ import colors from './colors.js'
 
 const pokemonContainer = document.getElementById('pokemon-container')
 
+const pokeball = document.getElementById('pokeball')
+
 const getPokemon = async (pokemon) => {
     await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`)
         .then(res => res.text())
@@ -91,7 +93,3 @@ const observer = new IntersectionObserver(([entry]) => {
 })
 
 observer.observe(document.getElementById('observer'))
-
-
-Window.onload = getAllPokemons(pagination)
-
